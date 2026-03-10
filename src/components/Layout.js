@@ -9,13 +9,13 @@ export default function Layout({ children }) {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Left Sidebar */}
-      <aside className="w-64 bg-white shadow-md">
-        <div className="p-4 font-bold text-xl border-b">CarouselBuilder</div>
+      <aside className="w-64 bg-white shadow-md text-gray-800">
+        <div className="p-4 font-bold text-xl border-b text-gray-900">CarouselBuilder</div>
         <nav className="p-2">
-          <Link href="/dashboard" className={`block p-2 rounded ${pathname === '/dashboard' ? 'bg-blue-500 text-white' : 'hover:bg-gray-200'}`}>
+          <Link href="/dashboard" className={`block p-2 rounded ${pathname === '/dashboard' ? 'bg-blue-500 text-white' : 'hover:bg-gray-200 text-gray-700'}`}>
             Dashboard
           </Link>
-          <Link href="/builder" className={`block p-2 rounded ${pathname === '/builder' ? 'bg-blue-500 text-white' : 'hover:bg-gray-200'}`}>
+          <Link href="/builder" className={`block p-2 rounded ${pathname === '/builder' ? 'bg-blue-500 text-white' : 'hover:bg-gray-200 text-gray-700'}`}>
             New Carousel
           </Link>
         </nav>
@@ -24,8 +24,8 @@ export default function Layout({ children }) {
       {/* Main Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white shadow-sm p-4 flex justify-between items-center z-10">
-          <h1 className="text-xl font-semibold">Carousel Builder</h1>
+        <header className="bg-white shadow-sm p-4 flex justify-between items-center z-10 text-gray-800">
+          <h1 className="text-xl font-semibold text-gray-900">Carousel Builder</h1>
           <div className="flex items-center space-x-2">
             <span className="text-sm text-gray-600">user@example.com</span>
             <button className="bg-red-500 text-white px-3 py-1 rounded text-sm">Logout</button>
