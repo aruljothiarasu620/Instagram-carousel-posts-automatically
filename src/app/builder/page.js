@@ -192,7 +192,7 @@ export default function BuilderPage() {
                       </div>
                     </div>
                     <select className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-purple-500 focus:border-purple-500 outline-none hover:border-purple-400 appearance-none bg-white">
-                      <option>My Facebook connection</option>
+                      <option>My Facebook connection {instagramAccounts.length > 0 ? '(Authorized)' : ''}</option>
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
@@ -355,11 +355,14 @@ export default function BuilderPage() {
 
             </div>
 
-             {/* Footer Actions */}
-             <div className="border-t border-gray-200 px-6 py-4 flex justify-between items-center bg-white rounded-br-xl select-none">
+              {/* Footer Actions */}
+             <div className="border-t border-gray-200 px-6 py-4 flex justify-between items-center bg-white rounded-br-xl select-none mt-auto">
                 <div className="flex space-x-3 items-center">
-                   <div className="text-xs text-gray-500 flex items-center gap-2 border border-gray-200 rounded px-2 py-1 bg-gray-50 cursor-pointer hover:bg-gray-100">
-                     <span className="text-purple-700">▶</span> Run once <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                   <div 
+                     onClick={!isPublishing ? handlePublish : undefined}
+                     className={`text-xs text-gray-500 flex items-center gap-2 border border-gray-200 rounded px-2 py-1 bg-gray-50 cursor-pointer hover:bg-gray-100 ${isPublishing ? 'opacity-50 cursor-not-allowed' : ''}`}
+                   >
+                     <span className="text-purple-700">▶</span> {isPublishing ? 'Running...' : 'Run once'} <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
                    </div>
                    <div className="text-xs text-gray-500 flex items-center">
                      <div className="w-8 h-4 bg-gray-200 rounded-full mr-2"></div>
@@ -368,7 +371,6 @@ export default function BuilderPage() {
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <span className="text-gray-400 text-xs font-semibold mr-4">Activate Windows<br/><span className="font-normal">Go to Settings to activate Windows.</span></span>
                   <button className="text-gray-700 text-sm font-medium hover:text-gray-900 px-2">Cancel</button>
                   <button 
                     onClick={handlePublish}
